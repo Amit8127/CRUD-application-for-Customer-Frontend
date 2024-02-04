@@ -86,7 +86,6 @@ const EditForm = ({ customer, onSave, onCancel }) => {
           type="text"
           name="email"
           value={editedData.email}
-          onChange={handleChange}
         />
       </td>
       <td>
