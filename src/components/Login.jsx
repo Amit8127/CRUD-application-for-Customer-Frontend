@@ -88,9 +88,15 @@ const Login = () => {
           LogIn
         </button>
 
-        <p style={{textAlign: "center",cursor: "pointer"}} onClick={() =>  navigate("/")}>
-            Don't have an Account? Click here to <span style={{color: '#0d6efd' , fontWeight: '500'}}>SingUp.</span>
-          </p>
+        <p style={{ textAlign: "center" }}>
+          Don't have an Account? Click here to{" "}
+          <span
+            style={{ color: "#0d6efd", fontWeight: "500", cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          >
+            SingUp.
+          </span>
+        </p>
       </div>
     </div>
   );

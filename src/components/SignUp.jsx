@@ -112,8 +112,8 @@ const SignUp = () => {
         >
           SignUp
         </button>
-        <p style={{textAlign: "center",cursor: "pointer"}} onClick={() =>  navigate("/login")}>
-            Already have an Account? Click here to <span style={{color: '#0d6efd', fontWeight: '500'}}>LogIn.</span>
+        <p style={{textAlign: "center"}} >
+            Already have an Account? Click here to <span style={{color: '#0d6efd', fontWeight: '500', cursor: "pointer"}} onClick={() =>  navigate("/login")}>LogIn.</span>
           </p>
       </div>
     </div>
