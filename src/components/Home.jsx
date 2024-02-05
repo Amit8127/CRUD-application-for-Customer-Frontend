@@ -10,6 +10,8 @@ import {
   getDataFromSunbase,
 } from "./../services/adminService";
 import EditForm from "./EditForm";
+import Loader from "./Loader/Loader";
+
 const Home = () => {
   const [customers, setCustomers] = useState([]);
   const navigate = useNavigate();
@@ -131,7 +133,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>{loading ? <Loader/> :<div>
       <div className="d-flex justify-content-end mt-2">
         <button className="btn btn-outline-primary mb-3" onClick={handelLogout}>
           LogOut
@@ -219,7 +221,7 @@ const Home = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </div>}</>
   );
 };
 

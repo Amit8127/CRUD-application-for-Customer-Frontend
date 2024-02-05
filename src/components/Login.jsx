@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../services/adminService";
 import { toast } from "react-toastify";
 import { doLogin } from "../auth/auth";
+import Loader from "./Loader/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -44,61 +45,75 @@ const Login = () => {
           toast.error("Error in Login");
         }
       });
+      setEmail("");
+      setIsEmailValid(false);
+      setPassword("");
+      setIsPasswordValid(false);
   };
   return (
-    <div className="row justify-content-center pt-5">
-      <h2 className="text-center">LogIn Page</h2>
-      <div className=" card col-sm-6">
-        <div className="mb-3 mt-3">
-          <label className="form-label">Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value.trim())}
-            onBlur={validateEmail}
-            style={{
-              border: isEmailValid ? "2px solid green" : "2px solid red",
-            }}
-            name="email"
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            id="pwd"
-            placeholder="Enter password"
-            onChange={(e) => setPassword(e.target.value.trim())}
-            onBlur={validatePassword}
-            style={{
-              border: isPasswordValid ? "2px solid green" : "2px solid red",
-            }}
-            name="pswd"
-          />
-        </div>
-        <button
-          type="button"
-          onClick={handleSubmit}
-          disabled={submitted || !isPasswordValid || !isEmailValid}
-          className="btn btn-primary mb-3"
-        >
-          LogIn
-        </button>
+    <>
+      {submitted ? (
+        <Loader />
+      ) : (
+        <div className="row justify-content-center pt-5">
+          <h2 className="text-center">LogIn Page</h2>
+          <div className=" card col-sm-6">
+            <div className="mb-3 mt-3">
+              <label className="form-label">Email:</label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value.trim())}
+                onBlur={validateEmail}
+                style={{
+                  border: isEmailValid ? "2px solid green" : "2px solid red",
+                }}
+                name="email"
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Password:</label>
+              <input
+                type="password"
+                className="form-control"
+                id="pwd"
+                placeholder="Enter password"
+                onChange={(e) => setPassword(e.target.value.trim())}
+                onBlur={validatePassword}
+                style={{
+                  border: isPasswordValid ? "2px solid green" : "2px solid red",
+                }}
+                name="pswd"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={submitted || !isPasswordValid || !isEmailValid}
+              className="btn btn-primary mb-3"
+            >
+              LogIn
+            </button>
 
-        <p style={{ textAlign: "center" }}>
-          Don't have an Account? Click here to{" "}
-          <span
-            style={{ color: "#0d6efd", fontWeight: "500", cursor: "pointer" }}
-            onClick={() => navigate("/")}
-          >
-            SingUp.
-          </span>
-        </p>
-      </div>
-    </div>
+            <p style={{ textAlign: "center" }}>
+              Don't have an Account? Click here to{" "}
+              <span
+                style={{
+                  color: "#316cf4",
+                  fontWeight: "500",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate("/")}
+              >
+                SingUp.
+              </span>
+            </p>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
