@@ -30,3 +30,6 @@ export const getCustomerById = (id) => {
   return myAxios.get(`/auth/customer/GetCustomerById/${id}`).then((response) => {return response.data});
 };
 
+export const getDataFromSunbase = () => {
+  return myAxios.get(`/auth/customer/getDataFromSunbase`).then((response) => {return response.data});
+};

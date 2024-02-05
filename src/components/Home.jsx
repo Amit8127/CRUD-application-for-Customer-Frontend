@@ -7,6 +7,7 @@ import {
   getCustomerById,
   deleteACustomerById,
   updateACustomer,
+  getDataFromSunbase,
 } from "./../services/adminService";
 import EditForm from "./EditForm";
 const Home = () => {
@@ -17,6 +18,8 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [searchColumn, setSearchColumn] = useState("first_name");
 
+  const [loading, setLoading] = useState(false);
+
   const [editId, setEditId] = useState(null);
   const [formData, setFormData] = useState({});
 
@@ -25,7 +28,6 @@ const Home = () => {
       try {
         const data = await allCustomers();
         setCustomers(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching customers:", error);
       }
@@ -63,7 +65,7 @@ const Home = () => {
 
   const handleDelete = (id) => {
     deleteACustomerById(id);
-    window.location.reload();
+    timeoutFunction(500);
   };
 
   const handleEdit = (id) => {
@@ -109,9 +111,24 @@ const Home = () => {
     return fieldValue.toLowerCase().includes(search.toLowerCase());
   });
 
-  const syncData = () => {
-    console.log("I was Trying my best but I didn't able to implement");
+  const syncData = async () => {
+    try {
+      setLoading(true);
+      await getDataFromSunbase();
+      toast.success("Customer Updated Successfully");
+      timeoutFunction(0);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Error in Sync...");
+    }
   };
+
+  function timeoutFunction(time) {
+    setTimeout(() => {
+      window.location.reload();
+    }, time);
+  }
 
   return (
     <div>
@@ -154,7 +171,7 @@ const Home = () => {
         />
 
         <button className="btn btn-outline-primary" onClick={syncData}>
-          Sync
+          {loading ? 'Wait' : 'Sync'}
         </button>
       </div>
       <table>

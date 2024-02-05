@@ -83,6 +83,7 @@ const EditForm = ({ customer, onSave, onCancel }) => {
       </td>
       <td>
         <input
+          disabled="true"
           type="text"
           name="email"
           value={editedData.email}
