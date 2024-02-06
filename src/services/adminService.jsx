@@ -11,25 +11,25 @@ export const login = (loginDetails) => {
 };
 
 export const allCustomers = () => {
-  return myAxios.get("/auth/customer/GetAllCustomers").then((response) => {return response.data});
+  return myAxios.get("/home/customer/GetAllCustomers").then((response) => {return response.data});
 };
 
 export const createACustomer = (customerObj) => {
-  return myAxios.post(`/auth/customer/CreateACustomer`, customerObj).then((response) => {return response.data});
+  return myAxios.post(`/home/customer/CreateACustomer`, customerObj).then((response) => {return response.data});
 };
 
 export const updateACustomer = (id, customerObj) => {
-  return myAxios.put(`/auth/customer/UpdateACustomer/${id}`, customerObj).then((response) => {return response.data});
+  return myAxios.put(`/home/customer/UpdateACustomer/${id}`, customerObj).then((response) => {return response.data});
 };
 
 export const deleteACustomerById = (id) => {
-  return myAxios.delete(`/auth/customer/DeleteACustomerById/${id}`).then((response) => {return response.data});
+  return myAxios.delete(`/home/customer/DeleteACustomerById/${id}`).then((response) => {return response.data});
 };
 
 export const getCustomerById = (id) => {
-  return myAxios.get(`/auth/customer/GetCustomerById/${id}`).then((response) => {return response.data});
+  return myAxios.get(`/home/customer/GetCustomerById/${id}`).then((response) => {return response.data});
 };
 
 export const getDataFromSunbase = () => {
-  return myAxios.get(`/auth/customer/getDataFromSunbase`).then((response) => {return response.data});
+  return myAxios.get(`/home/customer/getDataFromSunbase`).then((response) => {return response.data});
 };
