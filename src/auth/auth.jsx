@@ -28,3 +28,8 @@ export const getCurrentAdminDetails = () => {
     return false;
   }
 };
+
+export const getJwtToken = () => {
+  return JSON.parse(localStorage.getItem("data")).jwtToken;
+};
+
