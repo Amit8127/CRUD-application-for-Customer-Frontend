@@ -12,7 +12,7 @@ export const login = (loginDetails) => {
 
 export const allCustomers = () => {
   return api
-    .get("/home/customer/GetAllCustomers")
+    .get("/home/customer/getAllCustomers")
     .then((response) => {
       return response.data;
     });
@@ -20,7 +20,7 @@ export const allCustomers = () => {
 
 export const createACustomer = (customerObj) => {
   return api
-    .post(`/home/customer/CreateACustomer`, customerObj)
+    .post(`/home/customer/createACustomer`, customerObj)
     .then((response) => {
       return response.data;
     });
@@ -28,7 +28,7 @@ export const createACustomer = (customerObj) => {
 
 export const updateACustomer = (id, customerObj) => {
   return api
-    .put(`/home/customer/UpdateACustomer/${id}`, customerObj)
+    .put(`/home/customer/updateACustomer/${id}`, customerObj)
     .then((response) => {
       return response.data;
     });
@@ -36,7 +36,7 @@ export const updateACustomer = (id, customerObj) => {
 
 export const deleteACustomerById = (id) => {
   return api
-    .delete(`/home/customer/DeleteACustomerById/${id}`)
+    .delete(`/home/customer/deleteACustomerById/${id}`)
     .then((response) => {
       return response.data;
     });
@@ -44,7 +44,7 @@ export const deleteACustomerById = (id) => {
 
 export const getCustomerById = (id) => {
   return api
-    .get(`/home/customer/GetCustomerById/${id}`)
+    .get(`/home/customer/getCustomerById/${id}`)
     .then((response) => {
       return response.data;
     });
